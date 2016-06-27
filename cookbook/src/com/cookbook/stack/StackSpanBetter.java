@@ -1,20 +1,38 @@
+//Stock based implementation of stock span gives better implementation
+//it has running time of o(n)
+
 package com.cookbook.stack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class StackSpanBetter {
 
 	public static void main(String[] args) {
-		//int[] stock = { 100, 80, 60, 70, 60, 75, 85 };
-		int[] stock ={100, 60,70,65, 80, 85};
-		int[] span = new int[7];
-		Stack <Integer> st=new Stack<>();
-		span[0]=1;
-		st.push(stock[0]);
-		for(int i=1;i<stock.length;i++){
-			
+		List<Integer>stock=new ArrayList<>();
+		stock.add(100);
+		stock.add(60);
+		stock.add(70);
+		stock.add(65);
+		stock.add(80);
+		stock.add(85);
+		List<Integer>stockSpan=new ArrayList<>();
+		stockSpan.add(0,1);
+		Stack<Integer> span=new Stack<>();
+		span.push(0);
+		
+		for(int i=1;i<stock.size();i++){
+			while((!span.empty())&&(stock.get(span.peek())<stock.get(i))){
+				span.pop();
+			}
+			stockSpan.add(i,i-span.peek());
+			span.push(i);
 		}
+		System.out.println(stockSpan);
+		
 
 	}
+
 
 }
