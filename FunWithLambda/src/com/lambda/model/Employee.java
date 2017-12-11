@@ -1,11 +1,14 @@
 package com.lambda.model;
 
 public class Employee {
+	
+	private int id;
 	private String firstname;
 	private String lastname;
 	private int salary;
 	
-	public Employee(String firstname, String lastname, int salary) {		
+	public Employee(int id,String firstname, String lastname, int salary) {
+		this.id=id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.salary = salary;
@@ -35,12 +38,24 @@ public class Employee {
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
+	
+	
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 
 	@Override
 	public String toString() {
 		
-		return this.firstname+" "+lastname+": "+salary;
+		return this.id+" "+ this.firstname+" "+lastname+": "+salary;
 	}
 	
 	

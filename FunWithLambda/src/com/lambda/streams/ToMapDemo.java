@@ -1,18 +1,17 @@
 package com.lambda.streams;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.lambda.model.Employee;
 
-public class FindMethodsDemo {
+public class ToMapDemo {
+	public static void main(String[]args){
+		List<Employee> employees = new ArrayList<>();
 
-	public static void main(String[] args) {
-		//List<Employee>employees=new ArrayList<>();
-		Set<Employee>employees=new HashSet<>();
 		Employee emp1 = new Employee(101,"Mark", "Q", 10000);
 		Employee emp2 = new Employee(102,"Steven", "Roy", 5000);
 		Employee emp3 = new Employee(103,"Maggie", "Q", 20000);
@@ -34,15 +33,16 @@ public class FindMethodsDemo {
 		employees.add(emp8);
 		employees.add(emp9);
 		employees.add(emp10);
-        
-		Optional<Employee>emp=employees.stream()
-										.filter(e->e.getSalary()>10000)			
-				                       .findAny();
-		if(emp.isPresent()){
-			System.out.println(emp.get().toString());
-		}
 		
-
+		Map<Integer,Employee> empMap=employees.stream()
+				                   .filter(emp->emp.getSalary()>10000)				                  
+				                   .collect(Collectors.toMap(emp->emp.getId(),emp->emp));
+		
+		empMap.forEach((id,emp)->System.out.println("ID = "+id+"  "+"Employee = "+emp.toString()));
+		
+		//System.out.println("Hello world");
+		
+		
 	}
 
 }
