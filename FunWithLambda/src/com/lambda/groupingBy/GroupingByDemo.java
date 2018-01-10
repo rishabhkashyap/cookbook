@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.stream.Collectors;
+import  java.util.stream.Collectors;
 
 public class GroupingByDemo {
 
@@ -26,6 +26,17 @@ public class GroupingByDemo {
 				                                    .collect(Collectors.groupingBy(p->p.getCity()));
 		Set<Entry<String, List<Person>>>pplSet=peopleByCity.entrySet();
 		pplSet.forEach(e->e.getValue().forEach(element->System.out.println("Name = "+element.getName()+"   "+"City = "+element.getCity())));
+		
+		Set<Map.Entry<String, Long>> freq=people.stream()
+				                    .collect(Collectors.groupingBy(p->p.getCity(),Collectors.counting()))
+				                    .entrySet();
+				                    //.stream()
+//				                    .max(Map.Entry.comparingByValue())
+//				                    .map(Map.Entry::getKey());
+		
+	freq.forEach(e->System.out.println(e.getKey()+"     "+e.getValue()));	
+				                    
+				                    
 
 	}
 	
