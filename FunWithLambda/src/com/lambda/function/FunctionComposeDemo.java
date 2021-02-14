@@ -11,10 +11,10 @@ public class FunctionComposeDemo {
         employees.add(new Employee("Harvey Specter", 45));
         employees.add(new Employee("Dona Paulson", 40));
         employees.add(new Employee("Rachel Zane", 35));
-        Function<Employee, String> before = (e) -> getFirstName(e);
+        Function<Employee, String> firstName = (e) -> getFirstName(e);
         Function<String,Character> firstLetterOfName=(e)->e.charAt(0);
         for (Employee employee:employees){
-            System.out.println(firstLetterOfName.compose(before).apply(employee));
+            System.out.println(firstLetterOfName.compose(firstName).apply(employee));
         }
     }
     private static String getFirstName(Employee employee) {
