@@ -14,6 +14,7 @@ public class FunctionAndThenDemo {
         Function<Employee, String> firstName = (e) -> getFirstName(e);
         Function<String, Character> after = (e) -> e.charAt(0);
         for (Employee employee : employees) {
+            //Passed argument is executed after calling object's apply()
             System.out.println(firstName.andThen(after).apply(employee));
         }
 

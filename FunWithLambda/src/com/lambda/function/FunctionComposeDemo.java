@@ -14,6 +14,7 @@ public class FunctionComposeDemo {
         Function<Employee, String> firstName = (e) -> getFirstName(e);
         Function<String,Character> firstLetterOfName=(e)->e.charAt(0);
         for (Employee employee:employees){
+            //Passed argument is executed first
             System.out.println(firstLetterOfName.compose(firstName).apply(employee));
         }
     }
