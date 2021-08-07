@@ -1,9 +1,0 @@
-
-Create Driver
-curl "http://localhost:7070/drivers" \
-  -X POST \
-  -d "{\n  \"firstname\":\"John\",\n  \"lastname\":\"Doe\",\n  \"email\": \"abc.gmail.com\",\n  \"mobileNumber\": \"1234567890\",\n  \"cab\":{\n    \"registrationNumber\":\"hkjdshfkjsdf\",\n    \"cabType\":\"mini\",\n    \"seats\":4\n  }\n}" \
-  -H "content-type: application/json"
-
-
-  curl "http://localhost:7070/drivers/9"
